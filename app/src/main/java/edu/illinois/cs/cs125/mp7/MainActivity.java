@@ -14,8 +14,4 @@ public class MainActivity extends AppCompatActivity {
     public int test() {
         return 0;
     }
-
-    public int testTwo() {
-        return 1;
-    }
 }
