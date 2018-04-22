@@ -31,18 +31,66 @@
             android:textSize="25sp"
             android:textColor="#2a2a2a"
             />
-    </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/description_one"
-        android:textColor="#2a2a2a"
-        android:textSize="15sp" />
+    </LinearLayout>
 
     <View
         android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:visibility="visible" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="135dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Milk" />
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eggs" />
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Potatoes" />
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bread" />
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Beef" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:text="@string/calculate"
+        android:id="@+id/button_one"
+        android:layout_marginTop="5dp"
+        />
+
+    <View
+        android:id="@+id/divider_two"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="25dp"
@@ -74,33 +122,6 @@
         android:textColor="#ffffff"
         android:text="@string/button_one"
         android:id="@+id/button"
-        android:layout_marginTop="5dp"
-        />
-
-    <View
-        android:id="@+id/divider_two"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimaryDark"
-        android:visibility="visible" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/description_three"
-        android:textColor="#2a2a2a"
-        android:textSize="15sp"
-        />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="#ffffff"
-        android:text="@string/button_two"
-        android:id="@+id/button_two"
         android:layout_marginTop="5dp"
         />
 

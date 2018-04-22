@@ -4,18 +4,20 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#FDE3DF" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:layout_marginTop="25dp">
 
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="75dp"
+            android:background="@drawable/ucm592803"
+            android:layout_width="153dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/product_name"
             />
@@ -27,23 +29,38 @@
             android:layout_marginStart="10dp"
             android:text="@string/app_introduction"
             android:textSize="25sp"
+            android:textColor="#2a2a2a"
             />
     </LinearLayout>
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:visibility="visible" />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/app_introduction"
-        android:textSize="15sp"
-        />
+        android:layout_height="28dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/price_one"
+        android:textColor="#2a2a2a"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:text="@string/price_two"
+        android:textColor="#2a2a2a"
+        android:textSize="15sp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:paddingBottom="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:hint="@string/product_name"
         android:textColor="#2a2a2a"
         android:ems="10"
@@ -55,8 +72,45 @@
         android:layout_height="52dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="#ffffff"
-        android:text="@string/button"
+        android:text="@string/return_button"
         android:id="@+id/button"
         android:layout_marginTop="5dp"
         />
+
+    <View
+        android:id="@+id/divider_two"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:visibility="visible" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/description_three"
+        android:textColor="#2a2a2a"
+        android:textSize="15sp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:text="@string/button_two"
+        android:id="@+id/button_two"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/citations"
+        android:textColor="#2a2a2a"
+        android:textSize="10sp"
+        />
+
 </LinearLayout>
