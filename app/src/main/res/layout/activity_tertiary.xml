@@ -132,7 +132,7 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="#ffffff"
         android:text="@string/main"
-        android:id="@+id/button"
+        android:id="@+id/goMain"
         android:layout_marginTop="5dp"
         />
 

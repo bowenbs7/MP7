@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MP7:Main";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
