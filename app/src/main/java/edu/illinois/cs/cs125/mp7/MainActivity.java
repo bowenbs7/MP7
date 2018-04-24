@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
     public int test() {
         return 0;
     }
+
+    /**
+     * Comparing prices to see discounts.
+     * Calculate price of cart.
+     */
 }

@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">MP7</string>
+    <string name="product_name">Product Name</string>
+    <string name="button_one">See Results!</string>
+    <string name="button_two">Let\'s Go!</string>
+    <string name="return_button">Search Again?</string>
+    <string name="main">Go Back To Main Page</string>
+    <string name="app_introduction">The Wegman\'s Grocery App</string>
+    <string name="description_one">Welcome to the Wegman\'s Grocery App. You can choose to compare prices and view discounts, or calculate the cost of your grocery cart.</string>
+    <string name="description_two">Type in the name of one of Wegmans\'s products!</string>
+    <string name="description_three">Calculate the cost of your grocery cart!</string>
+    <string name="citations">API and product information from Wegman\'s Food Markets, Inc. Photo credited to the Federal Food and Drug Administration.</string>
+    <string name="price_one">Here\'s our prices:</string>
+    <string name="price_two">Here\'s other store\'s prices:</string>
+    <string name="calculate">Calculate!</string>
+    <string name="cart_one">Choose one of the options below!</string>
+    <string name="cart_two">Or add an option yourself!</string>
 </resources>

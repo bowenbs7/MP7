@@ -33,14 +33,6 @@
             />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/description_one"
-        android:textColor="#2a2a2a"
-        android:textSize="15sp" />
-
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
@@ -53,7 +45,14 @@
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:layout_marginTop="25dp"
-        android:text="@string/description_two"
+        android:text="@string/price_one"
+        android:textColor="#2a2a2a"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:text="@string/price_two"
         android:textColor="#2a2a2a"
         android:textSize="15sp" />
 
@@ -61,10 +60,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+        android:layout_marginTop="10dp"
         android:hint="@string/product_name"
         android:textColor="#2a2a2a"
         android:ems="10"
-        android:id="@+id/itemPrice"
+        android:id="@+id/editText"
         />
 
     <Button
@@ -72,8 +72,8 @@
         android:layout_height="52dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="#ffffff"
-        android:text="@string/button_one"
-        android:id="@+id/priceCalculator"
+        android:text="@string/return_button"
+        android:id="@+id/button"
         android:layout_marginTop="5dp"
         />
 
@@ -85,22 +85,13 @@
         android:background="@color/colorPrimaryDark"
         android:visibility="visible" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/description_three"
-        android:textColor="#2a2a2a"
-        android:textSize="15sp"
-        />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="#ffffff"
-        android:text="@string/button_two"
-        android:id="@+id/groceryCart"
+        android:text="@string/main"
+        android:id="@+id/button_two"
         android:layout_marginTop="5dp"
         />
 
