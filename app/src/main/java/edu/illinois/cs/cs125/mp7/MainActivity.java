@@ -19,29 +19,36 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
+    static RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestQueue = Volley.newRequestQueue(this);
         setContentView(R.layout.activity_main);
     }
+
     //Used volley to get the JSON data from pricecharting.com as jsonResult
-    String url = "https://www.pricecharting.com/api/product?t=e858b303b42db5af194bd8dc53bdfcf5e098ff42";
+    String url = "https://www.pricecharting.com/api/product?t=e858b303b42db5af194bd8dc53bdfcf5e098ff42&q=" + "mario";
     final TextView mTextView = (TextView) findViewById(R.id.textView_1);
-    RequestQueue queue = Volley.newRequestQueue(this);
-    StringRequest jsonResult = new StringRequest(Request.Method.GET, url,
-            new Response.Listener<String>() {
+
+    JsonObjectRequest jsonResult = new JsonObjectRequest
+            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
                 @Override
-                public void onResponse(String response) {
-                    // Display the first 500 characters of the response string.
-                    mTextView.setText("Response is: "+ response.substring(0,500));
+                public void onResponse(JSONObject response) {
+                    mTextView.setText("Response: " + response.toString());
                 }
             }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            mTextView.setText("That didn't work!");
-        }
-    });
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // TODO: Handle error
+                }
+            });
+    requestQueue.add(jsonResult);
 }
