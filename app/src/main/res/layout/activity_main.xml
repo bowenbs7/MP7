@@ -5,7 +5,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
-    android:background="#FDE3DF" >
+    android:background="#D8F7FE" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,11 +15,10 @@
 
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:background="@drawable/ucm592803"
-            android:layout_width="153dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:contentDescription="@string/product_name"
+            android:background="@drawable/gamecontroller"
+            android:contentDescription="@string/app_name"
             />
 
         <TextView
@@ -42,7 +41,6 @@
         android:textSize="15sp" />
 
     <View
-        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="25dp"
@@ -68,17 +66,16 @@
         />
 
     <Button
-        android:id="@+id/seeResults"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_marginTop="5dp"
         android:background="@color/colorPrimaryDark"
-        android:onClick="seeResults"
+        android:textColor="#ffffff"
         android:text="@string/button_one"
-        android:textColor="#ffffff" />
+        android:id="@+id/priceCalculator"
+        android:layout_marginTop="5dp"
+        />
 
     <View
-        android:id="@+id/divider_two"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="25dp"
@@ -100,7 +97,7 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="#ffffff"
         android:text="@string/button_two"
-        android:id="@+id/groceryCart"
+        android:id="@+id/wishlist"
         android:layout_marginTop="5dp"
         />
 
