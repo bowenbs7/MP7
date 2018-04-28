@@ -25,6 +25,10 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
+    String test;
+    String newPrice = "new-price";
+    String retailBuy = "retail-new-buy";
+    String retailSell = "retail-new-sell";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Used volley to get the JSON data from pricecharting.com as jsonResult
-    String test;
     public void startAPI(final String gameInput) {
         requestQueue = Volley.newRequestQueue(this);
         if (gameInput == null) {
@@ -92,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText productName = findViewById(R.id.productName);
 
+        final TextView marketPrice = findViewById(R.id.marketPrice);
+
         final Button searchAgain = findViewById(R.id.seeResults);
         searchAgain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,5 +135,11 @@ public class MainActivity extends AppCompatActivity {
                 mainActivity();
             }
         });
+    }
+    public double priceGetter(final String json, final String cat) {
+        JsonParser parser = new JsonParser();
+        JsonObject result = parser.parse(json).getAsJsonObject();
+        double price = result.get(cat).getAsDouble();
+        return price/100;
     }
 }
