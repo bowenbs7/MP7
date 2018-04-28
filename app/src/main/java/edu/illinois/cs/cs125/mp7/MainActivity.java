@@ -28,39 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        final Button seeResults = findViewById(R.id.seeResults);
-        seeResults.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                Log.d(TAG, "See results button clicked");
-            }
-        });
-
-        final Button letsGo = findViewById(R.id.letsGo);
-        letsGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                Log.d(TAG, "Let's go button clicked");
-            }
-        });
-
-        final Button mainPage = findViewById(R.id.mainPage);
-        mainPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                Log.d(TAG, "Main page button clicked");
-            }
-        });
-
-        final Button calculate = findViewById(R.id.calculate);
-        calculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                Log.d(TAG, "Calculate button clicked");
-            }
-        });
+        mainActivity();
     }
 
     //Used volley to get the JSON data from pricecharting.com as jsonResult
@@ -87,5 +55,67 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         requestQueue.add(jsonResult);
+    }
+
+    public void mainActivity() {
+        setContentView(R.layout.activity_main);
+
+        final Button seeResults = findViewById(R.id.seeResults);
+        seeResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "See results button clicked");
+                secondaryActivity();
+            }
+        });
+
+        final Button letsGo = findViewById(R.id.letsGo);
+        letsGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Let's go button clicked");
+                setContentView(R.layout.activity_tertiary);
+                tertiaryActivity();
+            }
+        });
+    }
+    public void secondaryActivity() {
+        setContentView(R.layout.activity_secondary);
+
+        final Button searchAgain = findViewById(R.id.seeResults);
+        searchAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Search again button clicked");
+            }
+        });
+
+        final Button mainPage = findViewById(R.id.mainPage);
+        mainPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Main page button clicked");
+                mainActivity();
+            }
+        });
+    }
+    public void tertiaryActivity() {
+        setContentView(R.layout.activity_tertiary);
+        final Button calculate = findViewById(R.id.calculate);
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Calculate button clicked");
+            }
+        });
+
+        final Button mainPage = findViewById(R.id.mainPage);
+        mainPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Main page button clicked");
+                mainActivity();
+            }
+        });
     }
 }
