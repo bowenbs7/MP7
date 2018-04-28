@@ -46,7 +46,7 @@
         android:layout_marginTop="25dp">
 
         <TextView
-            android:layout_width="175dp"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
             android:text="@string/game_title"
             android:textColor="#2a2a2a"
@@ -54,7 +54,7 @@
 
         <TextView
             android:id="@+id/gameTitle"
-            android:layout_width="175dp"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:text=""
             android:textColor="#2a2a2a"
@@ -68,15 +68,15 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="175dp"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:text="@string/available"
+            android:text="Available:"
             android:textColor="#2a2a2a"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/offer"
-            android:layout_width="175dp"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:text=""
             android:textColor="#2a2a2a"
@@ -91,15 +91,15 @@
 
         <TextView
             android:id="@+id/marketPrice"
-            android:layout_width="175dp"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:text="@string/price_one"
+            android:text="Market Price:"
             android:textColor="#2a2a2a"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/offeredPrice"
-            android:layout_width="175dp"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:text=""
             android:textColor="#2a2a2a"
@@ -113,15 +113,15 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="175dp"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:text="@string/price_two"
+            android:text="Retail Price"
             android:textColor="#2a2a2a"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/retailedPrice"
-            android:layout_width="175dp"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:text=""
             android:textColor="#2a2a2a"
@@ -135,15 +135,15 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="175dp"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
-            android:text="@string/price_three"
+            android:text="Sell Price"
             android:textColor="#2a2a2a"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/sellPrice"
-            android:layout_width="175dp"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:text=""
             android:textColor="#2a2a2a"
