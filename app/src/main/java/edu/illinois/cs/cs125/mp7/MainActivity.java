@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, newPrice + "?");
                 if (count == 0) {
                     count++;
+                    final Button seeResults = findViewById(R.id.seeResults);
+                    seeResults.setText("See Results!");
                 } else {
                     count = 0;
                     secondaryActivity();
@@ -131,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 startAPI(input);
                 if (count == 0) {
                     count++;
+                    final Button seeResults = findViewById(R.id.seeResults);
+                    seeResults.setText("See Results!");
                 } else {
                     count = 0;
                     secondaryActivity();
