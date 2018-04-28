@@ -83,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 Log.d(TAG, "See results button clicked");
                 String input = productName.getText().toString();
-                startAPI(input);
                 Log.d(TAG, newPrice + "?");
                 if (count == 0) {
+                    startAPI(input);
                     count++;
                 } else {
                     count = 0;
@@ -128,8 +128,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 Log.d(TAG, "Search again button clicked");
                 String input = productName.getText().toString();
-                startAPI(input);
                 if (count == 0) {
+                    startAPI(input);
                     count++;
                 } else {
                     count = 0;
