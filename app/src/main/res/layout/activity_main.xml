@@ -55,7 +55,7 @@
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/itemPrice"
+        android:id="@+id/productName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

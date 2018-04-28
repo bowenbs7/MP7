@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -32,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Used volley to get the JSON data from pricecharting.com as jsonResult
-    String url = "https://www.pricecharting.com/api/product?t=e858b303b42db5af194bd8dc53bdfcf5e098ff42&q=" + "mario";
-    //final TextView mTextView = (TextView) findViewById(R.id.textView_1);
     String test;
-    public void startAPI() {
+    public void startAPI(final String gameInput) {
         requestQueue = Volley.newRequestQueue(this);
+        if (gameInput == null) {
+            Log.d(TAG, "null input error");
+        }
+        String url = "https://www.pricecharting.com/api/product?t=e858b303b42db5af194bd8dc53bdfcf5e098ff42&q=" + gameInput;
         JsonObjectRequest jsonResult = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
@@ -50,15 +53,19 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, "An error occured" + error.toString());
+                        Log.d(TAG, "An error occured " + error.toString());
                         // TODO: Handle error
                     }
                 });
         requestQueue.add(jsonResult);
     }
 
+    //Sets up the activity_main.xml page
     public void mainActivity() {
         setContentView(R.layout.activity_main);
+
+        final EditText productName = findViewById(R.id.productName);
+        final String input = productName.getText().toString();
 
         final Button seeResults = findViewById(R.id.seeResults);
         seeResults.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 Log.d(TAG, "See results button clicked");
                 secondaryActivity();
-                startAPI();
+                startAPI(input);
             }
         });
 
@@ -80,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //Sets up the activity_secondary.xml page
     public void secondaryActivity() {
         setContentView(R.layout.activity_secondary);
 
@@ -100,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //Sets up the activity_tertiary.xml page
     public void tertiaryActivity() {
         setContentView(R.layout.activity_tertiary);
         final Button calculate = findViewById(R.id.calculate);
