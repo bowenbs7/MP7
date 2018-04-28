@@ -86,9 +86,49 @@
         android:layout_height="52dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="#ffffff"
+        android:text="@string/add_game"
+        android:id="@+id/addGame"
+        android:layout_marginTop="5dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:layout_width="175dp"
+            android:layout_height="match_parent"
+            android:text="@string/wishlist"
+            android:textColor="#2a2a2a"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/wishlist"
+            android:layout_width="175dp"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textColor="#2a2a2a"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
         android:text="@string/calculate"
         android:id="@+id/calculate"
-        android:layout_marginTop="5dp"
         />
 
     <View
