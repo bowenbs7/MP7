@@ -25,13 +25,13 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
-    String json;
-    String newPrice;
-    String retailBuy = "sup";
-    String retailSell;
-    String newPriceCat = "new-price";
-    String retailBuyCat = "retail-new-buy";
-    String retailSellCat = "retail-new-sell";
+    static String json;
+    static String newPrice;
+    static String retailBuy;
+    static String retailSell;
+    static String newPriceCat = "new-price";
+    static String retailBuyCat = "retail-new-buy";
+    static String retailSellCat = "retail-new-sell";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Used volley to get the JSON data from pricecharting.com as jsonResult
     public void startAPI(final String gameInput) {
+        Log.d(TAG, "starting API call");
         requestQueue = Volley.newRequestQueue(this);
         if (gameInput == null) {
             Log.d(TAG, "null input error");
@@ -79,8 +80,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "See results button clicked");
-                String input = productName.getText().toString();
-                startAPI(input);
+                //String input = productName.getText().toString();
+                //startAPI(input);
+                Log.d(TAG, retailBuy + "?");
                 secondaryActivity();
             }
         });
@@ -89,9 +91,12 @@ public class MainActivity extends AppCompatActivity {
         letsGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                Log.d(TAG, "Let's go button clicked");
+                /**Log.d(TAG, "Let's go button clicked");
                 setContentView(R.layout.activity_tertiary);
                 tertiaryActivity();
+                 */
+                String input = productName.getText().toString();
+                startAPI(input);
             }
         });
     }
