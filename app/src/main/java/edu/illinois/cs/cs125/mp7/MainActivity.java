@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
-    static RequestQueue requestQueue;
+    static com.android.volley.RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +35,21 @@ public class MainActivity extends AppCompatActivity {
     //Used volley to get the JSON data from pricecharting.com as jsonResult
     String url = "https://www.pricecharting.com/api/product?t=e858b303b42db5af194bd8dc53bdfcf5e098ff42&q=" + "mario";
     final TextView mTextView = (TextView) findViewById(R.id.textView_1);
+    public void startAPI() {
+        JsonObjectRequest jsonResult = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
-    JsonObjectRequest jsonResult = new JsonObjectRequest
-            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        mTextView.setText("Response: " + response.toString());
+                    }
+                }, new Response.ErrorListener() {
 
-                @Override
-                public void onResponse(JSONObject response) {
-                    mTextView.setText("Response: " + response.toString());
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // TODO: Handle error
-                }
-            });
-    requestQueue.add(jsonResult);
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                    }
+                });
+        requestQueue.add(jsonResult);
+    }
 }
