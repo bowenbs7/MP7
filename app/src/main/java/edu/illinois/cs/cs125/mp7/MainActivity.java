@@ -23,30 +23,66 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
-    static com.android.volley.RequestQueue requestQueue;
+    static RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestQueue = Volley.newRequestQueue(this);
         setContentView(R.layout.activity_main);
+
+        final Button seeResults = findViewById(R.id.seeResults);
+        seeResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "See results button clicked");
+            }
+        });
+
+        final Button letsGo = findViewById(R.id.letsGo);
+        letsGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Let's go button clicked");
+            }
+        });
+
+        final Button mainPage = findViewById(R.id.mainPage);
+        mainPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Main page button clicked");
+            }
+        });
+
+        final Button calculate = findViewById(R.id.calculate);
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Calculate button clicked");
+            }
+        });
     }
 
     //Used volley to get the JSON data from pricecharting.com as jsonResult
     String url = "https://www.pricecharting.com/api/product?t=e858b303b42db5af194bd8dc53bdfcf5e098ff42&q=" + "mario";
-    final TextView mTextView = (TextView) findViewById(R.id.textView_1);
+    //final TextView mTextView = (TextView) findViewById(R.id.textView_1);
+    String test;
     public void startAPI() {
+        requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonResult = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        mTextView.setText("Response: " + response.toString());
+                        test = response.toString();
+                        //mTextView.setText("Response: " + response.toString());
+                        Log.d(TAG, test);
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.d(TAG, "An error occured");
                         // TODO: Handle error
                     }
                 });

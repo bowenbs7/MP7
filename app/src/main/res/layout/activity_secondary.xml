@@ -74,14 +74,13 @@
         />
 
     <Button
+        android:id="@+id/seeResults"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="#ffffff"
-        android:text="@string/return_button"
-        android:id="@+id/priceCalculator"
         android:layout_marginTop="5dp"
-        />
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/return_button"
+        android:textColor="#ffffff" />
 
     <View
         android:layout_width="match_parent"
