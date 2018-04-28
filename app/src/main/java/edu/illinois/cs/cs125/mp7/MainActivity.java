@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         test = response.toString();
-                        //mTextView.setText("Response: " + response.toString());
                         Log.d(TAG, test);
                     }
                 }, new Response.ErrorListener() {
@@ -65,15 +64,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final EditText productName = findViewById(R.id.productName);
-        final String input = productName.getText().toString();
 
         final Button seeResults = findViewById(R.id.seeResults);
         seeResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "See results button clicked");
-                secondaryActivity();
+                String input = productName.getText().toString();
                 startAPI(input);
+                secondaryActivity();
             }
         });
 
@@ -91,11 +90,15 @@ public class MainActivity extends AppCompatActivity {
     public void secondaryActivity() {
         setContentView(R.layout.activity_secondary);
 
+        final EditText productName = findViewById(R.id.productName);
+
         final Button searchAgain = findViewById(R.id.seeResults);
         searchAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "Search again button clicked");
+                String input = productName.getText().toString();
+                startAPI(input);
             }
         });
 
