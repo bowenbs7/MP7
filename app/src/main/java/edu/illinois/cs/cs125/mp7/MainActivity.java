@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Used volley to get the JSON data from pricecharting.com as jsonResult
     String test;
-    public void startAPI(final String gameInput) {
+    public String startAPI(final String gameInput) {
         requestQueue = Volley.newRequestQueue(this);
         if (gameInput == null) {
             Log.d(TAG, "null input error");
@@ -130,5 +130,11 @@ public class MainActivity extends AppCompatActivity {
                 mainActivity();
             }
         });
+    }
+    public double priceGetter(final String json, final String cat) {
+        JsonParser parser = new JsonParser();
+        JsonObject result = parser.parse(json).getAsJsonObject();
+        double price = result.get(cat).getAsDouble();
+        return price/100;
     }
 }
