@@ -25,10 +25,13 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
-    String test;
-    String newPrice = "new-price";
-    String retailBuy = "retail-new-buy";
-    String retailSell = "retail-new-sell";
+    String json;
+    String newPrice;
+    String retailBuy = "sup";
+    String retailSell;
+    String newPriceCat = "new-price";
+    String retailBuyCat = "retail-new-buy";
+    String retailSellCat = "retail-new-sell";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
-                        test = response.toString();
-                        Log.d(TAG, test);
+                        json = response.toString();
+                        newPrice = String.valueOf(priceGetter(json,newPriceCat));
+                        retailBuy = String.valueOf(priceGetter(json,retailBuyCat));
+                        retailSell = String.valueOf(priceGetter(json,retailSellCat));
+                        Log.d(TAG, json + "//" + newPrice + "//" + retailBuy + "//" + retailSell);
                     }
                 }, new Response.ErrorListener() {
 
@@ -95,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText productName = findViewById(R.id.productName);
 
-        final TextView marketPrice = findViewById(R.id.marketPrice);
+        final TextView offeredPrice = (TextView) findViewById(R.id.offeredPrice);
+        offeredPrice.setText("$ " + retailBuy);
 
         final Button searchAgain = findViewById(R.id.seeResults);
         searchAgain.setOnClickListener(new View.OnClickListener() {
