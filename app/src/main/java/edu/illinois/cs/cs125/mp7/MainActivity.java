@@ -22,16 +22,17 @@ import com.google.gson.JsonParser;
 
 import org.json.JSONObject;
 
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
-    String json;
-    String newPrice;
-    String retailBuy = "sup";
-    String retailSell;
-    String newPriceCat = "new-price";
-    String retailBuyCat = "retail-new-buy";
-    String retailSellCat = "retail-new-sell";
+    int count;
+    static String json;
+    static String newPrice;
+    static String retailBuy;
+    static String retailSell;
+    static String gameName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Used volley to get the JSON data from pricecharting.com as jsonResult
     public void startAPI(final String gameInput) {
+        Log.d(TAG, "starting API call");
         requestQueue = Volley.newRequestQueue(this);
         if (gameInput == null) {
             Log.d(TAG, "null input error");
@@ -52,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         json = response.toString();
-                        newPrice = String.valueOf(priceGetter(json,newPriceCat));
-                        retailBuy = String.valueOf(priceGetter(json,retailBuyCat));
-                        retailSell = String.valueOf(priceGetter(json,retailSellCat));
-                        Log.d(TAG, json + "//" + newPrice + "//" + retailBuy + "//" + retailSell);
+                        newPrice = String.valueOf(priceGetter(json,"new-price"));
+                        retailBuy = String.valueOf(priceGetter(json,"retail-new-buy"));
+                        retailSell = String.valueOf(priceGetter(json,"retail-new-sell"));
+                        gameName = titleGetter(json);
+                        Log.d(TAG, json + "//" + newPrice + "//" + retailBuy + "//" + retailSell + "//" + gameName);
                     }
                 }, new Response.ErrorListener() {
 
@@ -81,7 +84,13 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "See results button clicked");
                 String input = productName.getText().toString();
                 startAPI(input);
-                secondaryActivity();
+                Log.d(TAG, newPrice + "?");
+                if (count == 0) {
+                    count++;
+                } else {
+                    count = 0;
+                    secondaryActivity();
+                }
             }
         });
 
@@ -101,8 +110,17 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText productName = findViewById(R.id.productName);
 
-        final TextView offeredPrice = (TextView) findViewById(R.id.offeredPrice);
-        offeredPrice.setText("$ " + retailBuy);
+        final TextView offeredPrice = findViewById(R.id.offeredPrice);
+        offeredPrice.setText("$ " + newPrice);
+
+        final TextView retailedPrice = findViewById(R.id.retailedPrice);
+        retailedPrice.setText("$ " + retailSell);
+
+        final TextView sellPrice = findViewById(R.id.sellPrice);
+        sellPrice.setText("$ " + retailBuy);
+
+        final TextView gameTitle = findViewById(R.id.gameTitle);
+        gameTitle.setText(gameName);
 
         final Button searchAgain = findViewById(R.id.seeResults);
         searchAgain.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +129,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "Search again button clicked");
                 String input = productName.getText().toString();
                 startAPI(input);
+                if (count == 0) {
+                    count++;
+                } else {
+                    count = 0;
+                    secondaryActivity();
+                }
             }
         });
 
@@ -148,5 +172,11 @@ public class MainActivity extends AppCompatActivity {
         JsonObject result = parser.parse(json).getAsJsonObject();
         double price = result.get(cat).getAsDouble();
         return price/100;
+    }
+    public String titleGetter(final String json) {
+        JsonParser parser = new JsonParser();
+        JsonObject result = parser.parse(json).getAsJsonObject();
+        String title = result.get("product-name").getAsString();
+        return title;
     }
 }
