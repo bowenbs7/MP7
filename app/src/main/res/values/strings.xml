@@ -10,10 +10,14 @@
     <string name="description_two">Type in the name of one of a video game!</string>
     <string name="description_three">Calculate the cost of your wishlist!</string>
     <string name="citations">API and product information from PriceCharting.com. Photo taken from OpenClipArt.com.</string>
+    <string name="game_title">Game Title:</string>
     <string name="available">Is this being offered?</string>
     <string name="price_one">Here\'s the offered price:</string>
     <string name="price_two">Here\'s is the retail price:</string>
-    <string name="calculate">Calculate!</string>
+    <string name="price_three">Here\'s is the sell price:</string>
+    <string name="add_game">Add this game!</string>
+    <string name="wishlist">Here\'s the cost of your wishlist:</string>
+    <string name="calculate">Calculate Wish list!</string>
     <string name="cart_one">Choose one of the games below!</string>
     <string name="cart_two">Or add an game yourself!</string>
 </resources>
