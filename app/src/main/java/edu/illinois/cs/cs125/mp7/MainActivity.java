@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d(TAG, "An error occured");
+                        Log.d(TAG, "An error occured" + error.toString());
                         // TODO: Handle error
                     }
                 });
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 Log.d(TAG, "See results button clicked");
                 secondaryActivity();
+                startAPI();
             }
         });
 
