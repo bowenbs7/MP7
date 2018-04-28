@@ -22,6 +22,8 @@ import com.google.gson.JsonParser;
 
 import org.json.JSONObject;
 
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
@@ -29,9 +31,6 @@ public class MainActivity extends AppCompatActivity {
     static String newPrice;
     static String retailBuy;
     static String retailSell;
-    static String newPriceCat = "new-price";
-    static String retailBuyCat = "retail-new-buy";
-    static String retailSellCat = "retail-new-sell";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         json = response.toString();
-                        newPrice = String.valueOf(priceGetter(json,newPriceCat));
-                        retailBuy = String.valueOf(priceGetter(json,retailBuyCat));
-                        retailSell = String.valueOf(priceGetter(json,retailSellCat));
+                        newPrice = String.valueOf(priceGetter(json,"new-price"));
+                        retailBuy = String.valueOf(priceGetter(json,"retail-new-buy"));
+                        retailSell = String.valueOf(priceGetter(json,"retail-new-sell"));
                         Log.d(TAG, json + "//" + newPrice + "//" + retailBuy + "//" + retailSell);
                     }
                 }, new Response.ErrorListener() {
@@ -80,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "See results button clicked");
-                //String input = productName.getText().toString();
-                //startAPI(input);
-                Log.d(TAG, retailBuy + "?");
+                String input = productName.getText().toString();
+                startAPI(input);
+                Log.d(TAG, newPrice + "?");
                 secondaryActivity();
             }
         });
@@ -91,12 +90,9 @@ public class MainActivity extends AppCompatActivity {
         letsGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                /**Log.d(TAG, "Let's go button clicked");
+                Log.d(TAG, "Let's go button clicked");
                 setContentView(R.layout.activity_tertiary);
                 tertiaryActivity();
-                 */
-                String input = productName.getText().toString();
-                startAPI(input);
             }
         });
     }
@@ -106,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText productName = findViewById(R.id.productName);
 
-        final TextView offeredPrice = (TextView) findViewById(R.id.offeredPrice);
-        offeredPrice.setText("$ " + retailBuy);
+        final TextView offeredPrice = findViewById(R.id.offeredPrice);
+        offeredPrice.setText("$ " + newPrice);
 
         final Button searchAgain = findViewById(R.id.seeResults);
         searchAgain.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "Search again button clicked");
                 String input = productName.getText().toString();
                 startAPI(input);
+                secondaryActivity();
             }
         });
 
