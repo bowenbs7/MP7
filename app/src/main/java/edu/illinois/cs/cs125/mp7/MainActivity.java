@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
     int count;
-    int switchFlip;
     double totalPrice;
     static String json;
     static String newPrice;
@@ -163,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayout boxLayout = findViewById(R.id.checkBox);
         final EditText addGame = findViewById(R.id.editText);
         final TextView cartTotal = findViewById(R.id.wishlist);
+        final Button calculateWishList = findViewById(R.id.calculate);
 
         final Button addCheckBox = findViewById(R.id.addGame);
         addCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -183,18 +183,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 Log.d(TAG, "Calculate button clicked");
                 Log.d(TAG, String.valueOf(boxLayout.getChildCount()));
-                calculateCart();
+                //calculateCart();
                 if (count == 0) {
                     count++;
-                    final Button calculateWishList = findViewById(R.id.calculate);
                     calculateWishList.setText("Let's Go!");
+                    calculateCart();
                 } else {
                     count = 0;
+                    calculateWishList.setText("Do Another Wishlist");
                     double value = Double.parseDouble(retailSell);
                     totalPrice += value;
-                    Log.d(TAG, String.valueOf(totalPrice));
                     cartTotal.setText("$ " + String.valueOf(totalPrice));
                     totalPrice = 0.0;
+                    retailSell = null;
                 }
             }
         });
@@ -223,25 +224,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculateCart() {
         final LinearLayout boxLayout = findViewById(R.id.checkBox);
+        double value = 0.0;
         for (int i = 0; i < boxLayout.getChildCount(); i++) {
             View v = boxLayout.getChildAt(i);
             if (v instanceof CheckBox) {
                 if (((CheckBox) v).isChecked()) {
                     startAPI(((CheckBox) v).getText().toString());
-                    if (switchFlip == 0) {
-                        Log.d(TAG, "first time");
-                        switchFlip++;
-                    } else {
-                        Log.d(TAG, "next times");
-                        double value = Double.parseDouble(retailSell);
-                        totalPrice += value;
+                    if (retailSell != null) {
+                        Log.d(TAG, String.valueOf(retailSell));
+                        value = Double.parseDouble(retailSell);
+                        Log.d(TAG, String.valueOf(value) + "hey");
                     }
+                    totalPrice += value;
                 } else {
                     Log.d(TAG, "not checked");
                 }
             }
         }
-        switchFlip = 0;
-        Log.d(TAG, String.valueOf(totalPrice));
     }
 }
