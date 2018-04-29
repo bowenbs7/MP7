@@ -42,8 +42,8 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:text="@string/cart_one"
+        android:layout_height="wrap_content"
+        android:text="Choose some of the games below! Double click caluculate wishlist to see cost of your wishlist!"
         android:textColor="#2a2a2a"
         android:textSize="15sp" />
 
@@ -86,7 +86,8 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="28dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/cart_two"
         android:textColor="#2a2a2a"
         android:textSize="15sp" />

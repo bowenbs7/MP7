@@ -179,6 +179,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "Calculate button clicked");
+                //String input = productName.getText().toString();
+                //startAPI(input);
+                if (count == 0) {
+                    count++;
+                    final Button calculateWishList = findViewById(R.id.calculate);
+                    calculateWishList.setText("Let's Go!");
+                } else {
+                    count = 0;
+                }
             }
         });
 
