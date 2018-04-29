@@ -2,11 +2,14 @@ package edu.illinois.cs.cs125.mp7;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.app.ActionBar.LayoutParams;
 import android.util.Log;
 import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -87,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 if (count == 0) {
                     startAPI(input);
                     count++;
+                    final Button seeResults = findViewById(R.id.seeResults);
+                    seeResults.setText("See Results!");
                 } else {
                     count = 0;
                     secondaryActivity();
@@ -131,6 +136,8 @@ public class MainActivity extends AppCompatActivity {
                 if (count == 0) {
                     startAPI(input);
                     count++;
+                    final Button seeResults = findViewById(R.id.seeResults);
+                    seeResults.setText("See Results!");
                 } else {
                     count = 0;
                     secondaryActivity();
@@ -150,11 +157,37 @@ public class MainActivity extends AppCompatActivity {
     //Sets up the activity_tertiary.xml page
     public void tertiaryActivity() {
         setContentView(R.layout.activity_tertiary);
+
+        final LinearLayout boxLayout = findViewById(R.id.checkBox);
+        final EditText addGame = findViewById(R.id.editText);
+
+        final Button addCheckBox = findViewById(R.id.addGame);
+        addCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(TAG, "Add check box button clicked");
+                final LayoutParams lparams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+                CheckBox newCheck = new CheckBox(MainActivity.this);
+                newCheck.setText(addGame.getText().toString());
+                newCheck.setLayoutParams(lparams);
+                boxLayout.addView(newCheck);
+            }
+        });
+
         final Button calculate = findViewById(R.id.calculate);
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "Calculate button clicked");
+                //String input = productName.getText().toString();
+                //startAPI(input);
+                if (count == 0) {
+                    count++;
+                    final Button calculateWishList = findViewById(R.id.calculate);
+                    calculateWishList.setText("Let's Go!");
+                } else {
+                    count = 0;
+                }
             }
         });
 

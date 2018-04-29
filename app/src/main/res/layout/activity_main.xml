@@ -48,9 +48,9 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="28dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/description_two"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Type in the name of one of a video game! Double click the button to see prices!"
         android:textColor="#2a2a2a"
         android:textSize="15sp" />
 
@@ -69,7 +69,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="5dp"
         android:background="@color/colorPrimaryDark"
-        android:text="@string/button_one"
+        android:text="Start API"
         android:textColor="#ffffff" />
 
     <View
