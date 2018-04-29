@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         final LinearLayout boxLayout = findViewById(R.id.checkBox);
         final EditText addGame = findViewById(R.id.editText);
+        final TextView cartTotal = findViewById(R.id.wishlist);
 
         final Button addCheckBox = findViewById(R.id.addGame);
         addCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -188,9 +189,11 @@ public class MainActivity extends AppCompatActivity {
                     calculateWishList.setText("Let's Go!");
                 } else {
                     count = 0;
-                    double value = Double.parseDouble(retailBuy);
+                    double value = Double.parseDouble(retailSell);
                     totalPrice += value;
                     Log.d(TAG, String.valueOf(totalPrice));
+                    cartTotal.setText("$ " + String.valueOf(totalPrice));
+                    totalPrice = 0.0;
                 }
             }
         });
@@ -225,9 +228,11 @@ public class MainActivity extends AppCompatActivity {
                 if (((CheckBox) v).isChecked()) {
                     startAPI(((CheckBox) v).getText().toString());
                     if (count == 0) {
+                        Log.d(TAG, "first time");
                         count++;
                     } else {
-                        double value = Double.parseDouble(retailBuy);
+                        Log.d(TAG, "next times");
+                        double value = Double.parseDouble(retailSell);
                         totalPrice += value;
                     }
                 } else {
