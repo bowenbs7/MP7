@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
     int count;
+    int switchFlip;
     double totalPrice;
     static String json;
     static String newPrice;
@@ -227,9 +228,9 @@ public class MainActivity extends AppCompatActivity {
             if (v instanceof CheckBox) {
                 if (((CheckBox) v).isChecked()) {
                     startAPI(((CheckBox) v).getText().toString());
-                    if (count == 0) {
+                    if (switchFlip == 0) {
                         Log.d(TAG, "first time");
-                        count++;
+                        switchFlip++;
                     } else {
                         Log.d(TAG, "next times");
                         double value = Double.parseDouble(retailSell);
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        count = 0;
+        switchFlip = 0;
         Log.d(TAG, String.valueOf(totalPrice));
     }
 }
