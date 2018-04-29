@@ -49,18 +49,38 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="135dp">
+        android:layout_height="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/checkBox">
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/checkBox1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Game1" />
+                android:text="Super Mario Bros 3" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Legend of Zelda" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Horizon Zero Dawn" />
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Overwatch" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -91,18 +111,11 @@
         android:layout_marginTop="5dp"
         />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorPrimaryDark"
-        android:visibility="visible" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="175dp"
