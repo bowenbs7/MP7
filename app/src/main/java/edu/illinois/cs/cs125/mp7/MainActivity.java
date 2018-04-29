@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
     int count;
+    double totalPrice;
     static String json;
     static String newPrice;
     static String retailBuy;
@@ -187,6 +188,9 @@ public class MainActivity extends AppCompatActivity {
                     calculateWishList.setText("Let's Go!");
                 } else {
                     count = 0;
+                    double value = Double.parseDouble(retailBuy);
+                    totalPrice += value;
+                    Log.d(TAG, String.valueOf(totalPrice));
                 }
             }
         });
@@ -213,22 +217,25 @@ public class MainActivity extends AppCompatActivity {
         return title;
     }
 
-    public double calculateCart() {
-        double totalPrice = 0.0;
-        Log.d(TAG, String.valueOf(totalPrice));
+    public void calculateCart() {
         final LinearLayout boxLayout = findViewById(R.id.checkBox);
-        Log.d(TAG, "crash?");
         for (int i = 0; i < boxLayout.getChildCount(); i++) {
             View v = boxLayout.getChildAt(i);
             if (v instanceof CheckBox) {
                 if (((CheckBox) v).isChecked()) {
                     startAPI(((CheckBox) v).getText().toString());
-                    Log.d(TAG, retailBuy);
+                    if (count == 0) {
+                        count++;
+                    } else {
+                        double value = Double.parseDouble(retailBuy);
+                        totalPrice += value;
+                    }
+                } else {
+                    Log.d(TAG, "not checked");
                 }
             }
         }
-        startAPI("mario");
-        Log.d(TAG, retailBuy);
-        return totalPrice;
+        count = 0;
+        Log.d(TAG, String.valueOf(totalPrice));
     }
 }
