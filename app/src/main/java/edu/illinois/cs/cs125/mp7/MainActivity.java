@@ -179,8 +179,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "Calculate button clicked");
-                //String input = productName.getText().toString();
-                //startAPI(input);
+                Log.d(TAG, String.valueOf(boxLayout.getChildCount()));
+                calculateCart();
                 if (count == 0) {
                     count++;
                     final Button calculateWishList = findViewById(R.id.calculate);
@@ -211,5 +211,24 @@ public class MainActivity extends AppCompatActivity {
         JsonObject result = parser.parse(json).getAsJsonObject();
         String title = result.get("product-name").getAsString();
         return title;
+    }
+
+    public double calculateCart() {
+        double totalPrice = 0.0;
+        Log.d(TAG, String.valueOf(totalPrice));
+        final LinearLayout boxLayout = findViewById(R.id.checkBox);
+        Log.d(TAG, "crash?");
+        for (int i = 0; i < boxLayout.getChildCount(); i++) {
+            View v = boxLayout.getChildAt(i);
+            if (v instanceof CheckBox) {
+                if (((CheckBox) v).isChecked()) {
+                    startAPI(((CheckBox) v).getText().toString());
+                    Log.d(TAG, retailBuy);
+                }
+            }
+        }
+        startAPI("mario");
+        Log.d(TAG, retailBuy);
+        return totalPrice;
     }
 }
