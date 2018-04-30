@@ -30,8 +30,8 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MP7:Main";
     static RequestQueue requestQueue;
-    int count;
     double totalPrice;
+    int price = 0;
     static String json;
     static String newPrice;
     static String retailBuy;
@@ -63,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
                         retailSell = String.valueOf(priceGetter(json,"retail-new-sell"));
                         gameName = titleGetter(json);
                         Log.d(TAG, json + "//" + newPrice + "//" + retailBuy + "//" + retailSell + "//" + gameName);
+                        if (price == 0) {
+                            secondaryActivity();
+                        } else {
+                            totalPrice += Double.parseDouble(retailSell);
+                            final TextView cartTotal = findViewById(R.id.wishlist);
+                            cartTotal.setText("$ " + String.valueOf(totalPrice));
+                        }
                     }
                 }, new Response.ErrorListener() {
 
@@ -85,18 +92,10 @@ public class MainActivity extends AppCompatActivity {
         seeResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                price = 0;
                 Log.d(TAG, "See results button clicked");
                 String input = productName.getText().toString();
-                Log.d(TAG, newPrice + "?");
-                if (count == 0) {
-                    startAPI(input);
-                    count++;
-                    final Button seeResults = findViewById(R.id.seeResults);
-                    seeResults.setText("See Results!");
-                } else {
-                    count = 0;
-                    secondaryActivity();
-                }
+                startAPI(input);
             }
         });
 
@@ -105,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 Log.d(TAG, "Let's go button clicked");
-                setContentView(R.layout.activity_tertiary);
                 tertiaryActivity();
             }
         });
@@ -132,17 +130,10 @@ public class MainActivity extends AppCompatActivity {
         searchAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                price = 0;
                 Log.d(TAG, "Search again button clicked");
                 String input = productName.getText().toString();
-                if (count == 0) {
-                    startAPI(input);
-                    count++;
-                    final Button seeResults = findViewById(R.id.seeResults);
-                    seeResults.setText("See Results!");
-                } else {
-                    count = 0;
-                    secondaryActivity();
-                }
+                startAPI(input);
             }
         });
 
@@ -161,8 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
         final LinearLayout boxLayout = findViewById(R.id.checkBox);
         final EditText addGame = findViewById(R.id.editText);
-        final TextView cartTotal = findViewById(R.id.wishlist);
-        final Button calculateWishList = findViewById(R.id.calculate);
 
         final Button addCheckBox = findViewById(R.id.addGame);
         addCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -181,22 +170,13 @@ public class MainActivity extends AppCompatActivity {
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                final TextView wishlist = findViewById(R.id.wishlist);
+                wishlist.setText("$ 0.0");
+                price = 1;
+                totalPrice = 0.0;
                 Log.d(TAG, "Calculate button clicked");
                 Log.d(TAG, String.valueOf(boxLayout.getChildCount()));
-                //calculateCart();
-                if (count == 0) {
-                    count++;
-                    calculateWishList.setText("Let's Go!");
-                    calculateCart();
-                } else {
-                    count = 0;
-                    calculateWishList.setText("Do Another Wishlist");
-                    double value = Double.parseDouble(retailSell);
-                    totalPrice += value;
-                    cartTotal.setText("$ " + String.valueOf(totalPrice));
-                    totalPrice = 0.0;
-                    retailSell = null;
-                }
+                calculateCart();
             }
         });
 
@@ -224,18 +204,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculateCart() {
         final LinearLayout boxLayout = findViewById(R.id.checkBox);
-        double value = 0.0;
         for (int i = 0; i < boxLayout.getChildCount(); i++) {
             View v = boxLayout.getChildAt(i);
             if (v instanceof CheckBox) {
                 if (((CheckBox) v).isChecked()) {
                     startAPI(((CheckBox) v).getText().toString());
-                    if (retailSell != null) {
-                        Log.d(TAG, String.valueOf(retailSell));
-                        value = Double.parseDouble(retailSell);
-                        Log.d(TAG, String.valueOf(value) + "hey");
-                    }
-                    totalPrice += value;
                 } else {
                     Log.d(TAG, "not checked");
                 }
